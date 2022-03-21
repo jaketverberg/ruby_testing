@@ -15,7 +15,7 @@ describe Array do
     it 'is an Array' do
       expect(subject).to be_an(Array)
     end
-    
+
     # Below is one-line syntax that does the same as the above test.
     # Look at the doc string that is auto-generated when this test is run
     # (in a terminal window).
@@ -24,18 +24,18 @@ describe Array do
 
   context 'when using predicate matchers' do
     context 'when using the empty? predicate method' do
-      # A predicate method in Ruby ends with a ? and only returns true or false. 
+      # A predicate method in Ruby ends with a ? and only returns true or false.
       it 'returns true' do
         expect(subject.empty?).to eq true
       end
     end
-    
+
     # RSpec can leverage this to create predicate matchers for any predicate method.
     # https://relishapp.com/rspec/rspec-expectations/docs/built-in-matchers/predicate-matchers
     it 'is empty' do
       expect(subject).to be_empty
     end
-    
+
     # Below is one-line syntax that does the same as the above test.
     # Look at the doc string that is auto-generated when this test is run
     # (in a terminal window).
@@ -74,6 +74,7 @@ describe Array do
     # remove the 'x' before running this test
     xit 'is empty' do
       # Write a test to expect the subject to be empty.
+      expect(subject).to be_empty
     end
 
     # remove the 'x' before running this test
