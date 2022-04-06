@@ -47,11 +47,13 @@ describe NumberGame do
 
       # Write a similar test to the one above, that uses a custom matcher
       # instead of <, >, =.
-      matcher :be_between_zero_and_nine do
+      matcher :be_between_zero_and_nine do |actual|
+        (0..9).include?(actual)
       end
 
       # remove the 'x' before running this test
-      xit 'is a number between 0 and 9' do
+      it 'is a number between 0 and 9' do
+        should be_between_zero_and_nine(5)
       end
     end
   end
