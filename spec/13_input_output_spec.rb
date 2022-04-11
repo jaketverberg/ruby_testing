@@ -169,9 +169,15 @@ describe NumberGame do
     # Write a test for the following context.
     context 'when user inputs two incorrect values, then a valid input' do
       before do
+        invalid1 = 'r'
+        invalid2 = 'b'
+        valid_input = '2'
+        allow(game_loop).ro receive(:player_input).and_return(invalid1, invalid2, valid_input)
       end
 
-      xit 'completes loop and displays error message twice' do
+      it 'completes loop and displays error message twice' do
+        allow(game_loop).ro receive(:puts).with('Input error!').twice
+        game_loop.player_turn
       end
     end
   end
@@ -203,9 +209,11 @@ describe NumberGame do
     # @guess, and @count
     context 'when count is 2-3' do
       # remove the 'x' before running this test
-      xit 'outputs correct phrase' do
+      subject(:game_two) { described_class.new(1, '1', 3) }
+
+      it 'outputs correct phrase' do
         congrats_phrase = "Congratulations! You picked the random number in 3 guesses!\n"
-        expect { game.final_message }.to output(congrats_phrase).to_stdout
+        expect { game_two.final_message }.to output(congrats_phrase).to_stdout
       end
     end
 
@@ -213,8 +221,11 @@ describe NumberGame do
 
     # Write a test for the following context.
     context 'when count is 4 and over' do
+      subject(:last_game) { described_class.new(3, '3', 4..10) }
       # remove the 'x' before running this test
-      xit 'outputs correct phrase' do
+      it 'outputs correct phrase' do
+        congrats_phrase = "That was hard. It took you #{last_game.count} guesses!\n"
+        expect { last_game.final_message }.to output(congrats_phrase).to_stdout
       end
     end
   end
