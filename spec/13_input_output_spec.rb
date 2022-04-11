@@ -220,6 +220,7 @@ describe NumberGame do
     # ASSIGNMENT #6
 
     # Write a test for the following context.
+    #????????????????????? Not sure If I got this correct
     context 'when count is 4 and over' do
       subject(:last_game) { described_class.new(3, '3', 4..10) }
       # remove the 'x' before running this test
